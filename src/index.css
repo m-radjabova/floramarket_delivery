@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+
+  --color-primary: #365446;
+  --color-accent: #d88f7a;
+  --color-background: #fcf6ef;
+  --color-surface: #FFFFFF;
+  --color-text: #1f241f;
+  --color-secondary: #f3e4d7;
+  --color-ink-soft: #5f665e;
+
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-text font-sans antialiased transition-colors duration-300;
+    background-image:
+      radial-gradient(circle at top left, rgba(216, 143, 122, 0.18), transparent 28%),
+      radial-gradient(circle at 85% 15%, rgba(54, 84, 70, 0.14), transparent 24%),
+      linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0));
+    min-width: 320px;
+  }
+
+  ::selection {
+    background: rgba(54, 84, 70, 0.18);
+    color: var(--color-text);
+  }
+
+  a,
+  button,
+  input {
+    @apply outline-none;
+  }
+
+  img {
+    display: block;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(to bottom, rgba(255,255,255,0.10), transparent 18%),
+      radial-gradient(circle at 50% 0%, rgba(255,255,255,0.18), transparent 22%);
+    opacity: 0.8;
+    z-index: -1;
+  }
+}
+
+.dark {
+  --color-background: #151917;
+  --color-surface: #202521;
+  --color-text: #f3efe8;
+  --color-primary: #97b49d;
+  --color-accent: #e7ab97;
+  --color-secondary: #2a322b;
+  --color-ink-soft: #bac5bb;
+}
+
+.dark body {
+  background-image:
+    radial-gradient(circle at top left, rgba(231, 171, 151, 0.08), transparent 28%),
+    radial-gradient(circle at 85% 15%, rgba(151, 180, 157, 0.08), transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+}
+
+.dark .soft-card,
+.dark .glass-panel {
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+}
+
+.dark .section-kicker {
+  background: rgba(32, 37, 33, 0.8);
+  border-color: rgba(151, 180, 157, 0.18);
+}
+
+.dark input::placeholder {
+  color: rgba(243, 239, 232, 0.45);
+}
+
+@layer components {
+  .container-shell {
+    @apply max-w-7xl mx-auto px-4 md:px-8;
+  }
+
+  .glass-panel {
+    @apply bg-surface/70 backdrop-blur-xl border border-white/50 shadow-[0_20px_80px_rgba(31,36,31,0.08)];
+  }
+
+  .soft-card {
+    @apply rounded-[2rem] border border-primary/10 bg-surface shadow-[0_18px_60px_rgba(31,36,31,0.08)];
+  }
+
+  .section-kicker {
+    @apply inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/70 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.35em] text-primary;
+  }
+
+  .luxury-orb {
+    @apply absolute rounded-full blur-3xl pointer-events-none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-mesh {
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(216, 143, 122, 0.22), transparent 24%),
+      radial-gradient(circle at 80% 0%, rgba(54, 84, 70, 0.14), transparent 18%),
+      radial-gradient(circle at 80% 80%, rgba(54, 84, 70, 0.08), transparent 22%);
+  }
+
+  .shadow-lift {
+    box-shadow: 0 24px 70px rgba(31, 36, 31, 0.12);
+  }
+
+  .grid-fade {
+    background-image:
+      linear-gradient(rgba(54, 84, 70, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(54, 84, 70, 0.05) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(circle at center, black 30%, transparent 82%);
+  }
+}
